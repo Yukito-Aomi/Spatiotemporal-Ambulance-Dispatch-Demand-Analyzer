@@ -37,11 +37,11 @@ def generate_default_map(
         zoom_start=zoom_start,
     )
 
-    # 地図データを保存する
+    # 地図オブジェクトを書き出す 
     Path(output_path).parent.mkdir(parents=True, exist_ok=True)
     map.save(output_path)
 
-    print(f'✅ 名古屋市の地図（{output_path}）を生成しました．')
+    print(f'✅ 名古屋市の地図（{output_path}）を保存しました．')
 
 
 def main() -> None:
@@ -57,7 +57,7 @@ def main() -> None:
         '--output-file-name',
         type=str,
         default=OUTPUT_FILE_NAME,
-        help='出力される地図データのファイル名',
+        help='出力される地図のファイル名',
     )
     parser.add_argument(
         '--zoom-start',
