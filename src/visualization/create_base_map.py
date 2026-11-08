@@ -5,11 +5,10 @@ import argparse
 from pathlib import Path
 
 import folium
-from dotenv import load_dotenv
 
 from src.constants import (
     CENTER_POINT_NAGOYA,
-    OUTPUT_DIRECTORY,
+    OUTPUT_DIRECTORY_PATH,
     ZOOM_START
 )
 
@@ -18,7 +17,7 @@ OUTPUT_FILE_NAME = 'maps/default_map.html'
 
 
 def generate_default_map(
-    output_path: str = str(OUTPUT_DIRECTORY / Path(OUTPUT_FILE_NAME)),
+    output_path: str = str(OUTPUT_DIRECTORY_PATH / Path(OUTPUT_FILE_NAME)),
     zoom_start: int = ZOOM_START
 ) -> None:    
     """
@@ -65,7 +64,7 @@ def main() -> None:
     args = parser.parse_args()
 
     # 出力先のパスを設定する
-    output_path = OUTPUT_DIRECTORY / Path(args.output_file_name)
+    output_path = OUTPUT_DIRECTORY_PATH / Path(args.output_file_name)
 
     # 地図を生成する
     generate_default_map(str(output_path), int(args.zoom_start))
