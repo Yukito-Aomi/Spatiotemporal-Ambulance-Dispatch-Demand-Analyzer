@@ -46,9 +46,6 @@ def generate_default_map(
 
 def main() -> None:
 
-    # 環境設定ファイルを読み込む
-    load_dotenv('.env')
-
     # コマンドライン引数を設定する
     parser = argparse.ArgumentParser(
         description='名古屋市の地図を生成します．'
