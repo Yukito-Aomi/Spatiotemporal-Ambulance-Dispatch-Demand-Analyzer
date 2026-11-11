@@ -16,14 +16,11 @@ from src.constants import (
 OUTPUT_FILE_NAME = 'maps/default_map.html'
 
 
-def generate_default_map(
-    output_path: str = str(OUTPUT_DIRECTORY_PATH / Path(OUTPUT_FILE_NAME)),
-    zoom_start: int = ZOOM_START
-) -> None:    
+def generate_default_map(output_directory_path: str = str(OUTPUT_DIRECTORY_PATH / Path(OUTPUT_FILE_NAME)), zoom_start: int = ZOOM_START) -> None:    
     """
     名古屋市の地図を生成する関数．
 
-    :param output_path:
+    :param output_directory_path:
         出力先のパス．
 
     :zoom_start:
@@ -37,10 +34,10 @@ def generate_default_map(
     )
 
     # 地図オブジェクトを書き出す 
-    Path(output_path).parent.mkdir(parents=True, exist_ok=True)
-    map.save(output_path)
+    Path(output_directory_path).parent.mkdir(parents=True, exist_ok=True)
+    map.save(output_directory_path)
 
-    print(f'✅ 名古屋市の地図（{output_path}）を保存しました．')
+    print(f'✅ 名古屋市の地図（{output_directory_path}）を保存しました．')
 
 
 def main() -> None:
@@ -64,10 +61,10 @@ def main() -> None:
     args = parser.parse_args()
 
     # 出力先のパスを設定する
-    output_path = OUTPUT_DIRECTORY_PATH / Path(args.output_file_name)
+    output_file_path = OUTPUT_DIRECTORY_PATH / Path(args.output_file_name)
 
     # 地図を生成する
-    generate_default_map(str(output_path), int(args.zoom_start))
+    generate_default_map(str(output_file_path), int(args.zoom_start))
 
 
 if __name__ == '__main__':

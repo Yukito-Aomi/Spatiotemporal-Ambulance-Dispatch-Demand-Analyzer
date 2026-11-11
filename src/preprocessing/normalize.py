@@ -55,8 +55,11 @@ def read_avm_data(input_file_path: Path) -> pd.DataFrame:
     :param input_file_path:
         入力先となるファイルのパス．
     
+    :return:
+        pd.DataFrame型で表されたデータ．
+    
     :raises UnicodeError:
-        規定の文字符号化方式で読み込めなかった場合
+        規定の文字符号化方式で読み込めなかった場合．
     """
 
     for encoding in ENCODINGS:
@@ -68,10 +71,7 @@ def read_avm_data(input_file_path: Path) -> pd.DataFrame:
     raise UnicodeError(f'⚠️ ファイル（{input_file_path}）の文字符号化方式が規定の方式と異なります．')
 
 
-def normalize_raw_data_file(
-    input_file_path: Path,
-    output_directory_path: Path = OUTPUT_DIRECTORY_PATH,
-) -> None:
+def normalize_raw_data_file(input_file_path: Path, output_directory_path: Path = OUTPUT_DIRECTORY_PATH) -> None:
     """
     生のAVMシステムデータを正規化する関数．
     以下の処理を施す．
@@ -168,9 +168,9 @@ def main() -> None:
     print('> 生のAVMシステムデータを正規化します．')
 
     # 全AVMシステムデータを処理する
-    for current, raw_data_file in enumerate(raw_data_files, start=1):
+    for current, file in enumerate(raw_data_files, start=1):
         print(f'\t> [{current:0{digit}d}/{total}] ', end='')
-        normalize_raw_data_file(raw_data_file, output_directory_path)
+        normalize_raw_data_file(file, output_directory_path)
 
 
 if __name__ == '__main__':
