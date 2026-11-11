@@ -105,7 +105,7 @@ def normalize_raw_data_file(
     df = df.reindex(columns=AVM_DATA_COLUMNS)
 
     # 受信時刻のフォーマットを変換する
-    df[AVM_DATA_COLUMNS[3]] = pd.to_datetime(df[AVM_DATA_COLUMNS[3]].astype('string'), format='%Y%m%d%H%M%S', errors='coerce').dt.strftime('%H:%M:%S')
+    df[AVM_DATA_COLUMNS[3]] = pd.to_datetime(df[AVM_DATA_COLUMNS[3]].astype('string'), format='%Y%m%d%H%M%S', errors='coerce').dt.strftime('%Y-%m-%d %H:%M:%S')
 
     # 緯度経度のフォーマットを変換する
     for column in [AVM_DATA_COLUMNS[4], AVM_DATA_COLUMNS[5]]:
