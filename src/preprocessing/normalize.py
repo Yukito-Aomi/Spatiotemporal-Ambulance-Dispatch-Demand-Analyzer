@@ -8,7 +8,6 @@ from pathlib import Path
 
 import pandas as pd
 
-
 from src.constants import (
     AVM_DATA_COLUMNS,
     OUTPUT_DIRECTORY_PATH,
